@@ -1,0 +1,21 @@
+{
+    "name": "web.whatsapp sharing",
+    "description": "enables you to login, while someone else scans the code",
+    "version": "0.1",
+    "permissions": [
+    "tabs","<all_urls>"
+    ],
+    "browser_action": {},
+
+    "content_scripts": [
+        {
+        "matches": [
+            "https://web.whatsapp.com/*"
+            ],
+        "js":["script.js"],
+
+        "run_at": "document_end"         // pay attention to this line
+        }
+    ], 
+    "manifest_version":2
+}

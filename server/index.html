@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Whatsapp Qr relay</title>
+    <style media="screen">
+      img {
+        margin:100px;
+        width:300px;
+        height:300px;
+        background-size: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Whatsapp Qr relay</h1>
+    <article class="">
+      Person A (with phone) opens this page in the browser.
+      <br/>
+      Person B (without phone) opens
+      <a href='http://web.whatsapp.com'>web.whatsapp.com</a>
+      and has the chrome-extension (email sv@lent.ink for the latest version) installed.
+      <br/>
+      The chrome-extension will get the Qr code that you see on the screen,
+      but cannot scan (you do not have the phone) and send it to person B,
+      which will receive it on his screen.
+    </article>
+    <img src="" id='pic'/>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script>
+      var socket = io();
+      socket.on('qr', function(msg){
+        console.log("we've got socket")
+        var imgsrc = decodeURIComponent(msg.qr)
+        $('#pic').css("background-image","url('"+imgsrc+"')")
+      });
+    </script>
+  </body>
+</html>

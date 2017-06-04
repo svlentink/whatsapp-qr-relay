@@ -1,0 +1,11 @@
+# todo
+version: '2'
+services:
+  web:
+    build:
+      context: $PWD
+      dockerfile: Dockerfile
+    container_name: node
+    expose:
+      - "80"
+      - "8080"
